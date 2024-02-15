@@ -4,7 +4,7 @@
   "description": "Script to get prices of veggies from jiomart",
   "main": "index.js",
   "scripts": {
-    "test": "npm run dev"
+    "start": "node app.js"
   },
   "author": "Neeraj Butola",
   "license": "ISC",
