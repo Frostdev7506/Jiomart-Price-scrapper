@@ -1,4 +1,12 @@
 const puppeteer = require("puppeteer");
+const express = require("express");
+
+exports.fetchJiomartVegetablesDataController = async (req, res) => {
+  const url =
+    "https://www.jiomart.com/c/groceries/fruits-vegetables/fresh-vegetables/229";
+  const data = await scrapeProduct(url);
+  res.json(data);
+};
 async function scrapeProduct(url) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -38,16 +46,10 @@ async function scrapeProduct(url) {
     })
   );
 
-  names.forEach((name, index) => {
-    console.log(index, name, ":", prices[index]);
+  const output = names.map((name, index) => {
+    return { name: name, price: prices[index] };
   });
 
-  console.log({ name, price });
-
   await browser.close();
+  return output;
 }
-
-// Replace this URL with the URL of the vegetable you want to scrape
-scrapeProduct(
-  "https://www.jiomart.com/c/groceries/fruits-vegetables/fresh-vegetables/229"
-);
