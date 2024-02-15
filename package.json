@@ -2,7 +2,7 @@
   "name": "jiomart-price-scrapper",
   "version": "1.0.0",
   "description": "Script to get prices of veggies from jiomart",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
