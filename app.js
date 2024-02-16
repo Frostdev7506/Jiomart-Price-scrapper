@@ -4,13 +4,13 @@ const app = express();
 
 const PORT = 3002;
 
-const {
-  fetchJiomartVegetablesDataController,
-  fetchJiomartFruitsDataController,
-  fetchJiomartAttaDataController,
-} = require("./controller/scrapeController");
+const jiomartRoutes = require("./routes/JiomartRoutes");
+
 // Parse JSON request body
 app.use(express.json());
+
+// Use Jiomart routes
+app.use("/api", jiomartRoutes);
 // Start the server
 app.listen(PORT || 3000, () => {
   console.log(`Server is running on port ${PORT}`);
@@ -21,7 +21,3 @@ app.get("/", (req, res) => {
     "The Scrapper server is up and running!Currenly wokring routes are : \n /api/jiomartfreshfruits \n /api/jiomartfreshvegies \n /api/jiomartatta"
   );
 });
-
-app.get("/api/jiomartfreshfruits", fetchJiomartFruitsDataController);
-app.get("/api/jiomartfreshvegies", fetchJiomartVegetablesDataController);
-app.get("/api/jiomartatta", fetchJiomartAttaDataController);
