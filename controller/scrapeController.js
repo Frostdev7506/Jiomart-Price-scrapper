@@ -1,6 +1,8 @@
 const puppeteer = require("puppeteer");
 const express = require("express");
 
+require("dotenv").config();
+
 exports.fetchJiomartVegetablesDataController = async (req, res) => {
   const url =
     "https://www.jiomart.com/c/groceries/fruits-vegetables/fresh-vegetables/229";
@@ -35,7 +37,20 @@ exports.fetchJiomartAttaDataController = async (req, res) => {
 async function scrapeProduct(url, PriceElements, NameElements) {
   const browser = await puppeteer.launch({
     headless: true,
-    args: ["--headless", "--no-sandbox", "--disable-setuid-sandbox"],
+    args: [
+      "--disable-setuid-sandbox",
+      "--no-sandbox",
+      "--single-process",
+      "--no-zygote",
+    ],
+    executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath(),
+    executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath(),
   });
   const page = await browser.newPage();
   await page.goto(url);
