@@ -2,16 +2,20 @@ express = require("express");
 
 const app = express();
 
+const PORT = 3002;
+
 const {
   fetchJiomartVegetablesDataController,
   fetchJiomartFruitsDataController,
+  fetchJiomartAttaDataController,
 } = require("./controller/scrapeController");
 // Parse JSON request body
 app.use(express.json());
 // Start the server
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(PORT || 3000, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
 app.get("/api/jiomartfreshfruits", fetchJiomartFruitsDataController);
 app.get("/api/jiomartfreshvegies", fetchJiomartVegetablesDataController);
+app.get("/api/jiomartatta", fetchJiomartAttaDataController);

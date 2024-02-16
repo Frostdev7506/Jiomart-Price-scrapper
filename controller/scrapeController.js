@@ -13,7 +13,19 @@ exports.fetchJiomartVegetablesDataController = async (req, res) => {
 exports.fetchJiomartFruitsDataController = async (req, res) => {
   const url =
     "https://www.jiomart.com/c/groceries/fruits-vegetables/fresh-fruits/220";
-  const PriceElements = ".plp-card-details-price span.jm-body-s-bold.jm-mr-xxs";
+  const PriceElements = ".plp-card-details-price span.jm-heading-xxs.jm-mb-xxs";
+
+  const NameElements =
+    ".plp-card-details-name.line-clamp.jm-body-xs.jm-fc-primary-grey-80";
+  const data = await scrapeProduct(url, PriceElements, NameElements);
+  res.json(data);
+};
+
+exports.fetchJiomartAttaDataController = async (req, res) => {
+  const url =
+    "https://www.jiomart.com/c/groceries/staples/atta-flours-sooji/26";
+  const PriceElements = ".plp-card-details-price span.jm-heading-xxs.jm-mb-xxs";
+
   const NameElements =
     ".plp-card-details-name.line-clamp.jm-body-xs.jm-fc-primary-grey-80";
   const data = await scrapeProduct(url, PriceElements, NameElements);
