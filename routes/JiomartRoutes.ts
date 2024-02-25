@@ -1,17 +1,17 @@
 // routes/jiomartRoutes.js
-const express = require("express");
-const router = express.Router();
+import express, { Router } from "express";
+const router: Router = express.Router();
 
 // Import controllers
-const {
+import {
   fetchJiomartVegetablesDataController,
   fetchJiomartFruitsDataController,
   fetchJiomartAttaDataController,
-} = require("../controller/scrapeController");
+} from "../controller/scrapeController";
 
 // Define routes
 router.get("/jiomartfreshfruits", fetchJiomartFruitsDataController);
 router.get("/jiomartfreshvegies", fetchJiomartVegetablesDataController);
 router.get("/jiomartatta", fetchJiomartAttaDataController);
 
-module.exports = router;
+export default router;

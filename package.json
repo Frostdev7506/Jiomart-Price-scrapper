@@ -4,11 +4,13 @@
   "description": "Script to get prices of veggies from jiomart",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon --watch '*.ts' --exec 'ts-node' app.ts",
+    "build": "tsc"
   },
   "author": "Neeraj Butola",
   "license": "ISC",
   "dependencies": {
+    "@types/puppeteer": "^7.0.4",
     "axios": "^1.6.7",
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.4.4",
@@ -19,6 +21,8 @@
     "node": ">=18.18.0 <19.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "@types/express": "^4.17.21",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2"
   }
 }
