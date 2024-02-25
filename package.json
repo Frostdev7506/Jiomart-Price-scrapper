@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --watch '*.ts' --exec 'ts-node' app.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "author": "Neeraj Butola",
   "license": "ISC",

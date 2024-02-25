@@ -1,6 +1,6 @@
 // tests/jiomartRoutes.test.ts
 import request from "supertest";
-import app from "../app"; // import your Express app
+import { app, server } from "../app"; // import your Express app
 
 describe("Jiomart Routes", () => {
   it("should fetch Jiomart Atta data", async () => {
@@ -24,5 +24,8 @@ describe("Jiomart Routes", () => {
     // Add more assertions about the response here as needed
   });
 
+  afterAll((done) => {
+    server.close(done);
+  });
   // Add more tests for other routes here
 });

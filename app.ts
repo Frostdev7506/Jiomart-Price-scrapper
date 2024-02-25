@@ -12,7 +12,7 @@ app.use(express.json());
 app.use("/api", jiomartRoutes);
 
 // Start the server
-app.listen(PORT || 3000, () => {
+const server = app.listen(PORT || 3000, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
@@ -30,4 +30,4 @@ app.get("/", (req: Request, res: Response) => {
   );
 });
 
-export default app;
+export { app, server };
