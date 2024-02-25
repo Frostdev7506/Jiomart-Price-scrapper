@@ -17,7 +17,15 @@ app.listen(PORT || 3000, () => {
 });
 
 app.get("/", (req, res) => {
+  let routes = [];
+  jiomartRoutes.stack.forEach(function (r) {
+    if (r.route && r.route.path) {
+      routes.push("/api" + r.route.path);
+    }
+  });
+
   res.send(
-    "The Scrapper server is up and running!Currenly wokring routes are : \n /api/jiomartfreshfruits \n /api/jiomartfreshvegies \n /api/jiomartatta"
+    "The Data Scrapper server is up and running!<br/> <br/>  Currently working routes are : <br/> ---------------------------------<br/>  " +
+      routes.join("<br/> ")
   );
 });
