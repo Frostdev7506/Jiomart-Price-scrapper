@@ -29,3 +29,5 @@ app.get("/", (req: Request, res: Response) => {
       routes.join("<br/> ")
   );
 });
+
+export default app;
